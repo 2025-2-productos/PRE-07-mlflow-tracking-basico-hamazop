@@ -65,7 +65,11 @@ def main():
     mlflow.log_metric("trai_mae", mae)
     mlflow.log_metric("train_r2", r2)
 
-
+    mlflow.sklearn.log_model(
+            sk_model=model,
+            artifact_path="model",
+            input_example=x_train[:1],
+        )
 
 if __name__ == "__main__":
     main()
